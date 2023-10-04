@@ -128,7 +128,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     public T obterProximo(){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void reiniciarNavegacao(){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
