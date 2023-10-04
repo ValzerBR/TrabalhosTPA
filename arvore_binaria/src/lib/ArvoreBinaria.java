@@ -99,7 +99,32 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public String caminharEmNivel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
+        if (raiz == null) {
+            return "[]";
+        }
+
+        Queue<No<T>> fila = new LinkedList<>();
+        fila.offer(raiz);
+
+        StringBuilder resultado = new StringBuilder("[");
+        while (!fila.isEmpty()) {
+            No<T> no = fila.poll();
+            resultado.append(no.getChave());
+
+            if (no.getFilhoEsquerda() != null) {
+                fila.offer(no.getFilhoEsquerda());
+            }
+            if (no.getFilhoDireita() != null) {
+                fila.offer(no.getFilhoDireita());
+            }
+
+            if (!fila.isEmpty()) {
+                resultado.append(", ");
+            }
+        }
+        resultado.append("]");
+
+        return resultado.toString();
     }
 
 
@@ -130,8 +155,13 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     }
 
     @Override
-    public void reiniciarNavegacao(){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void reiniciarNavegacao() {
+        pilhaDeNavegacao = new ArrayList<>();
+        No<T> no = raiz;
+        while (no != null) {
+            pilhaDeNavegacao.add(no);
+            no = no.getFilhoEsquerda();
+        }
     }
 
 }
